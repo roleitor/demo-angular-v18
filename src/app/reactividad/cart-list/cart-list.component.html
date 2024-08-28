@@ -1,0 +1,6 @@
+<ul class="w3-ul">
+  @for(product of (myCart$ | async); track product.id){
+  {{ product.title }}
+  }
+
+</ul>

@@ -1,0 +1,56 @@
+<h1>Task Signals</h1>
+<table class="w3-table w3-table-all">
+  <tr>
+    <th>Text</th>
+    <th>Completed</th>
+    <th> <button class="w3-button" (click)="openModal='block' ">
+        <i class="fa fa-plus" aria-hidden="true"></i>
+      </button> </th>
+  </tr>
+  @for(task of tasks(); track task.text; let i = $index){
+  <tr>
+    <td>
+      {{ task.text }}
+    </td>
+    <td>
+      @if(task.completed) { <span> [ Done ]</span>}
+      @else { <span> [To do] </span> }
+    </td>
+    <td>
+      <button class="w3-button" (click)="editTask(task)">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </button>
+      <button class="w3-button" (click)="removeTask(task.id)">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      </button>
+    </td>
+  </tr>
+  }
+</table>
+<!-- modal -->
+<div id="id01" class="w3-modal" [ngStyle]="{'display': openModal }">
+  <div class="w3-modal-content">
+    <header class="w3-container w3-light-grey">
+      <span (click)="openModal='none'" class="w3-button w3-display-topright">&times;</span>
+      <br>
+    </header>
+    <div class="w3-container w3-light-grey">
+      <br>
+      <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="Text">Text:</label>
+          <input type="text" class="w3-input" id="text" formControlName="text">
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="w3-check" id="completed" formControlName="completed">
+          <label class="form-check-label" for="completed"> Done</label>
+        </div>
+        <br>
+        <button class="w3-button w3-indigo" type="submit">Save</button>
+      </form>
+    </div>
+    <footer class="w3-container w3-light-grey">
+      <br>
+    </footer>
+  </div>
+</div>

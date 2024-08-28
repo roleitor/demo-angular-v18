@@ -1,0 +1,14 @@
+<ul class="w3-ul">
+  @for(item of cartItems$ | async;track item.product.id){
+  <li class="w3-bar">
+    <div class="w3-bar-item w3-small">
+      {{ item.product.name }} - Quantity: {{ item.quantity }} -
+      ${{ item.product.price * item.quantity }}
+      <span (click)="removeFromCart(item.product.id)" class="w3-button w3-white w3-right">
+        <i class="fa fa-trash-o" aria-hidden="true"></i>
+      </span>
+    </div>
+  </li>
+  }
+</ul>
+<p>Total: ${{ total$ | async }}</p>

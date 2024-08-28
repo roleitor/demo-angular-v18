@@ -1,0 +1,20 @@
+<div class="w3-sidebar w3-bar-block w3-animate-right"
+  [ngStyle]="{'width': '350px', 'right': '0px', 'display': displayMenu}">
+  <button class="w3-button w3-bar-item" (click)="displayMenu='none' ">
+    My Cart
+    &times;
+  </button>
+  <div class="w3-bar-item">
+    <app-cart></app-cart>
+  </div>
+</div>
+<div class="w3-bar">
+  <div class="w3-bar-item">
+    <h3>Shopping Redux</h3>
+  </div>
+  <button class="w3-button w3-bar-item w3-right w3-large" (click)="displayMenu='block' ">
+    <i class="fa fa-shopping-cart"></i>
+    &nbsp;<span class="w3-badge w3-red">
+      {{ (cartItems$ | async)?.length }}</span>
+  </button>
+</div>

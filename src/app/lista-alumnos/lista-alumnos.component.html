@@ -1,0 +1,16 @@
+<div class="w3-container w3-margin-top">
+  <h4>Directivas</h4>
+  <div class="w3-bar">
+    <div class="w3-bar-item">
+      <input class="w3-radio" type="radio" name="options" value="nombre" (change)="sortBy('nombre')" checked>
+      <label> Ordener por Nombre</label>
+    </div>
+    <div class="w3-bar-item">
+      <input class="w3-radio" type="radio" name="options" value="apellido" (change)="sortBy('apellido')">
+      <label> Ordener por Apellido</label>
+    </div>
+  </div>
+  <ul class="w3-ul" [appSortByAttribute]="alumnos" [sortAttribute]="currentSortAttribute">
+    <!-- La directiva se encargara de ordenar y renderizar los elementos -->
+  </ul>
+</div>

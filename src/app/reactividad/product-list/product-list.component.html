@@ -1,0 +1,20 @@
+<app-nav-bar-cart></app-nav-bar-cart>
+<div class="w3-container">
+  <ul class="w3-ul w3-card-4 w3-light-grey w3-margin-top">
+    @for(product of products;track product.id){
+    <li>
+      <img class="w3-bar-item w3-circle w3-hide-small" style="width: 100px;" [src]="product.thumbnail">
+      <div class="w3-bar-item">
+        <h4>{{ product.title }}</h4>
+        <p>
+          {{ product.description }}
+          &nbsp;
+          <button (click)="addProductToCart(product)" class="w3-button w3-white w3-border w3-round-large">
+            Add To Cart
+          </button>
+        </p>
+      </div>
+    </li>
+    }
+  </ul>
+</div>

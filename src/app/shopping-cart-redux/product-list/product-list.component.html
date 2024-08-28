@@ -1,0 +1,11 @@
+<app-nav-bar-cart></app-nav-bar-cart>
+<div class="w3-container">
+  <ul class="w3-ul w3-card-4 w3-light-grey">
+    @for(product of products$ | async;track product.id){
+    <li>
+      {{ product.name }} - ${{ product.price }} <br>
+      <button class="w3-button w3-white w3-border w3-round-large" (click)="addToCart(product)">Add to Cart</button>
+    </li>
+    }
+  </ul>
+</div>
